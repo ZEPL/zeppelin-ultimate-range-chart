@@ -106,6 +106,16 @@ export default class Chart extends Visualization {
     chart.yAxis[0].setExtremes(min, dExt);
   }
 
+  showError(error) {
+    this.clearChart()
+    this.getChartElement().innerHTML = `
+        <div style="margin-top: 60px; text-align: center; font-weight: 300">
+            <span style="font-size:30px; color: #e4573c;">
+                ${error.message} 
+            </span>
+        </div>`
+  }
+
   render(data) {
     const {
       chartChanged, parameterChanged,
@@ -114,10 +124,15 @@ export default class Chart extends Visualization {
 
     if (!chartChanged && !parameterChanged) { return }
 
-    if (chart === 'range') {
-      this.drawRangeChart(parameter, column, transformer)
-    } else if (chart === 'comparative') {
-      this.drawComparativeChart(parameter, column, transformer)
+    try {
+      if (chart === 'range') {
+        this.drawRangeChart(parameter, column, transformer)
+      } else if (chart === 'comparative') {
+        this.drawComparativeChart(parameter, column, transformer)
+      }
+    } catch (error) {
+      console.error(error)
+      this.showError(error)
     }
   }
 
