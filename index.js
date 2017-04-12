@@ -18,8 +18,8 @@ export default class Chart extends Visualization {
           transform: { method: 'array', },
           sharedAxis: false,
           axis: {
-            'xAxis': { dimension: 'multiple', axisType: 'aggregator', maxAxisCount: 2, },
-            'yAxis': { dimension: 'multiple', axisType: 'key', },
+            'xAxis': { dimension: 'multiple', axisType: 'aggregator', minAxisCount: 2, maxAxisCount: 2, },
+            'yAxis': { dimension: 'multiple', axisType: 'key', minAxisCount: 1, },
             'category': { dimension: 'multiple', axisType: 'group', },
           },
           parameter: CommonParameter,
@@ -29,9 +29,9 @@ export default class Chart extends Visualization {
           transform: { method: 'array', },
           sharedAxis: false,
           axis: {
-            'xAxis': { dimension: 'single', axisType: 'aggregator', },
+            'xAxis': { dimension: 'single', axisType: 'aggregator', minAxisCount: 1, },
             'yAxis': { dimension: 'multiple', axisType: 'key', },
-            'binomial': { dimension: 'single', axisType: 'group', },
+            'binomial': { dimension: 'single', axisType: 'group', minAxisCount: 1, },
           },
           parameter: ComparativeParameter,
         },
@@ -111,7 +111,7 @@ export default class Chart extends Visualization {
     this.getChartElement().innerHTML = `
         <div style="margin-top: 60px; text-align: center; font-weight: 300">
             <span style="font-size:30px; color: #e4573c;">
-                ${error.message} 
+                ${error.message}
             </span>
         </div>`
   }
