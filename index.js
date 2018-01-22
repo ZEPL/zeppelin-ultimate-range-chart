@@ -136,6 +136,14 @@ export default class Chart extends Visualization {
     }
   }
 
+  refresh() {
+    try {
+      this.chartInstance && this.chartInstance.setSize(this.targetEl.width())
+    } catch (e) {
+      console.warn(e)
+    }
+  }
+
   getTransformation() {
     return this.transformation
   }
