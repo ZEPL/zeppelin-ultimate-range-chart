@@ -1,6 +1,6 @@
 {
   "name": "ultimate-range-chart",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The Ultimate Range Chart for Apache Zeppelin using <a href src=\"http://www.highcharts.com/\">highcharts</a>",
   "main": "index.js",
   "scripts": {
